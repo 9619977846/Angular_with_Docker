@@ -48,7 +48,7 @@
      <!--  Column -->
      <ng-container matColumnDef="view">
       <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
-      <mat-cell *matCellDef="let row" routerLink="/tasks/{{row.uuid}}">
+      <mat-cell *matCellDef="let row" routerLink="/list-task/{{row.uuid}}">
         <span class="mobile-label">Action:</span>
         <button  mat-button color="primary">View</button> </mat-cell>
     </ng-container>

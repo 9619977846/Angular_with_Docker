@@ -6,9 +6,9 @@ import { TasksDetailsComponent } from './tasksDetails/tasks-details-component';
 import { PageNotFoundComponent } from './not-found-page-component';
 
 const routes: Routes = [
-  { path: 'tasks', component: TasksComponent },
-  { path: ':task-page/:uuid', component: TasksDetailsComponent },
-  { path: '',   redirectTo: '/tasks', pathMatch: 'full' },
+  { path: 'list-task', component: TasksComponent },
+  { path: 'list-task/:uuid', component: TasksDetailsComponent },
+  { path: '',   redirectTo: 'list-task', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

@@ -43,7 +43,7 @@ export class TasksDetailsComponent {
     this.taskService.editTaskDetails(this.taskDetails)
     .subscribe(data => {
       this.toastrService.success('Task updated successfully');
-          this.router.navigate(['/tasks']);
+          this.router.navigate(['/list-task']);
           },
             error => {
           this.toastrService.error('Internal error', 'Task updated failed');

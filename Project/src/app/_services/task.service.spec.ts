@@ -26,7 +26,7 @@ describe('TaskService', () => {
       priority: '1',
       resolvedat: null,
       status: 'NEW',
-      title: 'muju',
+      title: 'list-task',
       updatedat: 1541956288811,
       uuid: '2b49ea78-f502-4b07-a1d7-9b1a37e4489b'}];
   });
@@ -42,7 +42,7 @@ describe('TaskService', () => {
       (taskService: TaskService, backend: HttpTestingController) => {
         taskService.getTaskList().subscribe(
           (data: any) => {
-            expect(data[0].title).toEqual('muju');
+            expect(data[0].title).toEqual('list-task');
           },
           (error: any) => {}
         );
