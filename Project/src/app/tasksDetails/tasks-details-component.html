@@ -1,0 +1,82 @@
+
+<div class="taskForm" *ngIf="taskDetails">
+    <mat-toolbar color="primary">Edit Task Details</mat-toolbar>
+    <mat-card>
+    <mat-card-header>
+
+    </mat-card-header>
+      <mat-card-content>
+        <form name="taskForm" #f="ngForm" class="example-form">
+          <table class="example-full-width" cellspacing="0">
+
+            <tr>
+                <td><label class="task-detail-label">Title:</label></td>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="taskDetails.title" name="title">
+                  </mat-form-field>
+                </td>
+            </tr>
+
+            <tr>
+              <td><label class="task-detail-label">Description:</label> </td>
+              <td><mat-form-field class="example-full-width">
+                <input matInput [(ngModel)]="taskDetails.description" name="description">
+              </mat-form-field></td>
+            </tr>
+
+            <tr>
+                <td><label class="task-detail-label">Status:</label> </td>
+                <td><mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="taskDetails.status" name="status" disabled>
+                </mat-form-field></td>
+            </tr>
+
+            <tr>
+                <td> <label class="task-detail-label"> Duedate On:</label></td>
+                <td><mat-form-field class="example-full-width">
+                  <input type="date" matInput [value]="taskDetails.duedate | date:'yyyy-MM-dd'"
+                        (input)="taskDetails.duedate = parseDate($event.target.value); f.control.markAsDirty();" name="dueDate">
+                </mat-form-field></td>
+            </tr>
+
+            <tr>
+                <td><label class="task-detail-label">Updated On:</label> </td>
+                <td><mat-form-field class="example-full-width">
+                  <input type="date"  matInput [value]="taskDetails.updatedat | date:'yyyy-MM-dd'"
+                          (input)="taskDetails.updatedat = parseDate($event.target.value); f.control.markAsDirty();" name="updatedat">
+                </mat-form-field></td>
+            </tr>
+
+            <tr>
+                <td><label class="task-detail-label">Resolved On: </label></td>
+                <td><mat-form-field class="example-full-width">
+                  <input type="date"  matInput [value]="taskDetails.resolvedat | date:'yyyy-MM-dd'"
+                         (input)="taskDetails.resolvedat = parseDate($event.target.value); f.control.markAsDirty();"  name="resolvedat">
+                </mat-form-field></td>
+            </tr>
+
+            <tr>
+                <td><label class="task-detail-label">Postponed On: </label></td>
+                <td><mat-form-field class="example-full-width">
+                  <input type="date"  matInput [value]="taskDetails.postponedat | date:'yyyy-MM-dd'"
+                        (input)="taskDetails.postponedat = parseDate($event.target.value); f.control.markAsDirty();" name="postponedat">
+                </mat-form-field></td>
+            </tr>
+
+            <tr>
+                <td><label class="task-detail-label">Priority:</label></td>
+                <td><mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="taskDetails.priority" name="priority" disabled>
+                </mat-form-field></td>
+            </tr>
+         </table>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="!f.dirty" (click)="editTaskDetails()">Edit</button>
+        <button mat-raised-button color="primary" routerLink="/tasks">Back</button>
+      </mat-card-actions>
+
+    </mat-card>
+  </div>

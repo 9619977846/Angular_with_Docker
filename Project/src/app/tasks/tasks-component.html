@@ -1,0 +1,81 @@
+<div>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!--  Column -->
+    <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Tittle </mat-header-cell>
+        <mat-cell *matCellDef="let row"><span class="mobile-label">Tittle:</span>
+           {{row.title | truncate:[20, '...']}} </mat-cell>
+      </ng-container>
+
+      <!--  Column -->
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+        <mat-cell *matCellDef="let row" >
+          <span class="mobile-label">Description:</span>
+          {{row.description | truncate:[20, '...']}} </mat-cell>
+      </ng-container>
+    <!--  Column -->
+
+    <ng-container matColumnDef="status">
+     <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+          <span class="mobile-label">Status:</span>
+        {{row.status | truncate:[20, '...']}} </mat-cell>
+    </ng-container>
+
+    <!--  Column -->
+    <ng-container matColumnDef="duedate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Duedate </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+          <span class="mobile-label">Duedate:</span>
+        {{row.duedate | date | truncate:[20, '...']}} </mat-cell>
+    </ng-container>
+
+     <!--  Column -->
+     <ng-container matColumnDef="priority">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Priority </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+          <span class="mobile-label">Priority:</span>
+        {{row.priority | truncate:[20, '...']}} </mat-cell>
+    </ng-container>
+
+     <!--  Column -->
+     <ng-container matColumnDef="view">
+      <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+      <mat-cell *matCellDef="let row" routerLink="/tasks/{{row.uuid}}">
+        <span class="mobile-label">Action:</span>
+        <button  mat-button color="primary">View</button> </mat-cell>
+    </ng-container>
+
+     <!--  Column -->
+     <ng-container matColumnDef="postpone">
+       <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+          <span class="mobile-label">Action:</span>
+        <button  mat-button color="primary" (click)="postPoneTask(row)">Postpone</button> </mat-cell>
+    </ng-container>
+
+     <!--  Column -->
+      <ng-container matColumnDef="resolve">
+        <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+        <mat-cell *matCellDef="let row" >
+            <span class="mobile-label">Action:</span>
+          <button [disabled]="row.status === 'RESOLVED'" mat-button color="primary" md-raised-button (click)="resolveTask(row)">Resolve</button> </mat-cell>
+      </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"> </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+</div>
+
+
